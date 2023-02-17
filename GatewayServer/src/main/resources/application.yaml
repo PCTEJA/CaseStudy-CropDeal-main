@@ -1,0 +1,46 @@
+server:
+  port: 8084
+ 
+spring:
+   cloud:
+    gateway:
+     routes:
+       
+      #Route Mapping 
+       - id: cropservice                    #Route Identifier
+         uri: http://localhost:2222/              #Respective microservice URL which needs to be mapped
+         predicates:                              #Request Context Path Mapping 
+         - Path=/crop/**
+         
+      #Route Mapping 
+       - id: farmerservice                      
+         uri: http://localhost:1111/               
+         predicates: 
+         - Path=/farmer/**                         
+         
+      #Route Mapping 
+       - id: dealerservice 
+         uri: http://localhost:8082/
+         predicates: 
+         - Path=/dealer/**
+         
+         #Route Mapping 
+       - id: Payment
+         uri: http://localhost:5555/
+         predicates: 
+         - Path=/payment/**
+         
+         #Route Mapping 
+       - id: CartService
+         uri: http://localhost:8181/
+         predicates: 
+         - Path=/cart/**
+        
+     
+         #Route Mapping 
+       - id: AdminService
+         uri: http://localhost:7777/
+         predicates: 
+         - Path=/Admin/**
+        
+        
