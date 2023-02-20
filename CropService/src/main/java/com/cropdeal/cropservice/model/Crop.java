@@ -14,7 +14,7 @@ public class Crop {
 	private String cropName;
 	private String cropType;
 	private String cropQuantity;
-	private Location location;
+	private List<String> location;
 	private String price;
 	private String uploadedBy;
 	
@@ -23,7 +23,7 @@ public class Crop {
 		
 	}
 
-	public Crop(String id, String cropName, String cropType, String cropQuantity, Location location,
+	public Crop(String id, String cropName, String cropType, String cropQuantity, List<String> location,
 			String price, String uploadedBy) {
 		super();
 		this.id = id;
@@ -67,11 +67,11 @@ public class Crop {
 		this.cropQuantity = cropQuantity;
 	}
 
-	public Location getLocation() {
+	public List<String> getLocation() {
 		return location;
 	}
 
-	public void setLocation(Location location) {
+	public void setLocation(List<String> location) {
 		this.location = location;
 	}
 

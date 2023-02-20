@@ -1,12 +1,14 @@
 package com.cropdeal.dealerservice.models;
 
+import java.util.List;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import lombok.ToString;
+import com.cropdeal.dealerservice.models.Crop;
+
 
 @Document(collection = "Dealer")
-
 public class Dealer {
 
 	@Id
@@ -16,9 +18,11 @@ public class Dealer {
 	private String dealerEmail;
 	private String dealerContactNo;
 	private String passWord;
-	private BankDetails bankDetail;
+	private String  bankDetail;
+	private String dealerAddress;
+	private List<Crop> crops;
 	public Dealer(String id, String dealerName, String dealerEmail, String dealerContactNo, String passWord,
-			BankDetails bankDetail) {
+			String bankDetail, String dealerAddress, List<Crop> crops) {
 		super();
 		this.id = id;
 		this.dealerName = dealerName;
@@ -26,6 +30,8 @@ public class Dealer {
 		this.dealerContactNo = dealerContactNo;
 		this.passWord = passWord;
 		this.bankDetail = bankDetail;
+		this.dealerAddress = dealerAddress;
+		this.crops = crops;
 	}
 	public Dealer() {
 		super();
@@ -61,16 +67,32 @@ public class Dealer {
 	public void setPassWord(String passWord) {
 		this.passWord = passWord;
 	}
-	public BankDetails getBankDetail() {
+	public String getBankDetail() {
 		return bankDetail;
 	}
-	public void setBankDetail(BankDetails bankDetail) {
+	public void setBankDetail(String bankDetail) {
 		this.bankDetail = bankDetail;
 	}
+	public void setDealerAddress(String dealerAddress) {
+		this.dealerAddress = dealerAddress;
+	}
+	
+	public String getDealerAddress(){
+		return dealerAddress;
+	}
+	public List<Crop> getCrops() {
+		return crops;
+	}
+
+	public void setCrops(List<Crop> crops) {
+		this.crops = crops;
+	}
+
+	
 	@Override
 	public String toString() {
 		return "Dealer [id=" + id + ", dealerName=" + dealerName + ", dealerEmail=" + dealerEmail + ", dealerContactNo="
-				+ dealerContactNo + ", passWord=" + passWord + ", bankDetail=" + bankDetail + "]";
+				+ dealerContactNo + ", passWord=" + passWord + ", bankDetail=" + bankDetail + ", dealerAddress=" + dealerAddress +   ", crops=" + crops + "]";
 	}
 	
 	

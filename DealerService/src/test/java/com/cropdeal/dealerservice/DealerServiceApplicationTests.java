@@ -32,7 +32,7 @@ class DealerServiceApplicationTests {
 	
 	@Test
 	public void adddealerTest() {
-		Dealer dealer = new Dealer("1","abc","abc@gmail.com","12412414","12244",null);
+		Dealer dealer = new Dealer("1","abc","abc@gmail.com","12412414","12244",null, null, null);
 		when(dealerrepo.save(dealer)).thenReturn(dealer);
 		Dealer res=service.adddealer(dealer);
 		//assertEquals(dealer.getId(),res.getId());
@@ -40,7 +40,7 @@ class DealerServiceApplicationTests {
 	@Test
 	public void getdealerTest() {
 		when(dealerrepo.findAll()).thenReturn(Stream
-				.of(new Dealer("1","abc","abc@gmail.com","12412414","12244",null)).collect(Collectors.toList()));
+				.of(new Dealer("1","abc","abc@gmail.com","12412414","12244",null, null, null)).collect(Collectors.toList()));
 		assertEquals(1, service.getdealer().size());
 	}
 	

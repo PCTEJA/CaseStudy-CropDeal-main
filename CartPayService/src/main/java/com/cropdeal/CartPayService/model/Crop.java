@@ -1,6 +1,7 @@
 package com.cropdeal.CartPayService.model;
 
 import java.beans.JavaBean;
+import java.util.List;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -13,15 +14,17 @@ public class Crop {
 	private String cropName;
 	private String cropType;
 	private String cropQuantity;
-	private Location location;
+	private List<String> location;
 	private String price;
+	private String uploadedBy;
 	
 	public Crop()
 	{
 		
 	}
-	
-	public Crop(String id, String cropName, String cropType, String cropQuantity, Location location, String price) {
+
+	public Crop(String id, String cropName, String cropType, String cropQuantity, List<String> location,
+			String price, String uploadedBy) {
 		super();
 		this.id = id;
 		this.cropName = cropName;
@@ -29,6 +32,7 @@ public class Crop {
 		this.cropQuantity = cropQuantity;
 		this.location = location;
 		this.price = price;
+		this.uploadedBy = uploadedBy;
 	}
 
 	public String getId() {
@@ -63,11 +67,11 @@ public class Crop {
 		this.cropQuantity = cropQuantity;
 	}
 
-	public Location getLocation() {
+	public List<String> getLocation() {
 		return location;
 	}
 
-	public void setLocation(Location location) {
+	public void setLocation(List<String> location) {
 		this.location = location;
 	}
 
@@ -78,7 +82,24 @@ public class Crop {
 	public void setPrice(String price) {
 		this.price = price;
 	}
+	
+	
 
+	public String getUploadedBy() {
+		return uploadedBy;
+	}
+
+	public void setUploadedBy(String uploadedBy) {
+		this.uploadedBy = uploadedBy;
+	}
+
+	@Override
+	public String toString() {
+		return "Crop [id=" + id + ", cropName=" + cropName + ", cropType=" + cropType + ", cropQuantity=" + cropQuantity
+				+ ", location=" + location + ", price=" + price + ", uploadedBy=" + uploadedBy + "]";
+	}
+	
+	
 	
 
 }

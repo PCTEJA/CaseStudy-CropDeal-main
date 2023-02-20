@@ -36,8 +36,8 @@ class FarmerServiceApplicationTests {
 	@Test
     public void getFarmerTest() {
         when(farmerrepo.findAll()).thenReturn(Stream
-                .of(new Farmer("123","abcd","abc@123","34567889", null,null),
-                        new Farmer("321","cba","cba@321","34567889", null,null))
+                .of(new Farmer("123","abcd","abc@123","34567889", null,null, null),
+                        new Farmer("321","cba","cba@321","34567889", null,null, null))
                 .collect(Collectors.toList()));
         assertEquals(2, service.findAll().size());
     }
@@ -60,7 +60,7 @@ class FarmerServiceApplicationTests {
 
     @Test
     public void addfarmerTest() {
-        Farmer farmer = new Farmer("1","abc","abc@gmail.com","12412414",null,null);
+        Farmer farmer = new Farmer("1","abc","abc@gmail.com","12412414",null,null, null);
         when(farmerrepo.insert(farmer)).thenReturn(farmer);
         Farmer res=service.addFarmer(farmer);
         System.out.println(res);
@@ -71,7 +71,7 @@ class FarmerServiceApplicationTests {
     
 	@Test
     public void deleteFarmerbyidTest() {
-        Farmer farmer = new Farmer("999", "def","def@33", "234567",null,null);
+        Farmer farmer = new Farmer("999", "def","def@33", "234567",null,null, null);
         String id = "3";
         service.deleteById(id);
         verify(farmerrepo, times(1)).deleteById(id);

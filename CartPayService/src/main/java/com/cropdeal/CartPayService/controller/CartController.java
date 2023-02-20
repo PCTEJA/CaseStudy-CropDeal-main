@@ -23,6 +23,7 @@ import com.cropdeal.CartPayService.service.CartService;
 
 @RestController
 @RequestMapping("/cart")
+@CrossOrigin(origins = "http://localhost:4200")
 public class CartController {
 	
 	Logger log = LoggerFactory.getLogger(CartController.class);

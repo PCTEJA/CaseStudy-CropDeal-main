@@ -1,5 +1,7 @@
 package com.cropdeal.farmerservice.model;
 
+import java.util.List;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -11,15 +13,16 @@ public class Farmer {
 	private String farmerName;
 	private String farmeremail;
 	private String farmerContactNo;
-	private Location farmerAddress;
-	private BankDetails bankDetails;
+	private String farmerAddress;
+	private String bankDetails;
+	private List<Crop> crops;
 	
 	public Farmer() {
 		
 	}
 	
 	public Farmer(String farmerId, String farmerName, String farmeremail, String farmerContactNo,
-			Location farmerAddress, BankDetails bankDetails) {
+			String farmerAddress, String bankDetails, List<Crop> crops) {
 		super();
 		this.farmerId = farmerId;
 		this.farmerName = farmerName;
@@ -27,6 +30,7 @@ public class Farmer {
 		this.farmerContactNo = farmerContactNo;
 		this.farmerAddress = farmerAddress;
 		this.bankDetails = bankDetails;
+		this.crops = crops;
 	}
 
 	public String getFarmerId() {
@@ -61,27 +65,34 @@ public class Farmer {
 		this.farmerContactNo = farmerContactNo;
 	}
 
-	public Location getFarmerAddress() {
+	public String getFarmerAddress() {
 		return farmerAddress;
 	}
 
-	public void setFarmerAddress(Location farmerAddress) {
+	public void setFarmerAddress(String farmerAddress) {
 		this.farmerAddress = farmerAddress;
 	}
 
-	public BankDetails getBankDetails() {
+	public String getBankDetails() {
 		return bankDetails;
 	}
 
-	public void setBankDetails(BankDetails bankDetails) {
+	public void setBankDetails(String bankDetails) {
 		this.bankDetails = bankDetails;
+	}
+	public List<Crop> getCrops() {
+		return crops;
+	}
+
+	public void setCrops(List<Crop> crops) {
+		this.crops = crops;
 	}
 
 	@Override
 	public String toString() {
 		return "Farmer [farmerId=" + farmerId + ", farmerName=" + farmerName + ", farmeremail=" + farmeremail
 				+ ", farmerContactNo=" + farmerContactNo + ", farmerAddress=" + farmerAddress + ", bankDetails="
-				+ bankDetails + "]";
+				+ bankDetails +  ", crops=" + crops + "]";
 	}
 	
 

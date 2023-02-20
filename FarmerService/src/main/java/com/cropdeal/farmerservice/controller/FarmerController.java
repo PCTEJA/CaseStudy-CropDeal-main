@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,6 +28,7 @@ import com.cropdeal.farmerservice.service.FarmerService;
 
 @RestController
 @RequestMapping("/farmer")
+@CrossOrigin(origins = "http://localhost:4200")
 public class FarmerController {
 	Logger log = LoggerFactory.getLogger(FarmerController.class);
 	
@@ -91,6 +93,7 @@ public class FarmerController {
 
 		@RequestMapping(value = "/farmer/deletecrop/{id}", method = RequestMethod.DELETE)
 		public String deleteCropById(@PathVariable("id") String id) {
+			
 			return restTemp.exchange("http://cropservice/crop/deletecrop/{id}" + id, HttpMethod.DELETE, null, String.class)
 					.getBody();
 		}
@@ -99,6 +102,9 @@ public class FarmerController {
 
 		@RequestMapping(value = "/farmer/addcrop", method = RequestMethod.POST)
 		public String addCropatFarmer(@RequestBody Crop crop) {
+//			
+//			log.info("Updated successfully");
+//			farmerservice.updateFarmer(farmer);
 			HttpEntity<Crop> entity = new HttpEntity<Crop>(crop);
 			return restTemp.exchange("http://cropservice/crop/addcrop", HttpMethod.POST, entity, String.class).getBody();
 
@@ -108,6 +114,7 @@ public class FarmerController {
 		//---------------------update the crop by farmer-----------------------------
 			@RequestMapping(value="/farmer/update/crop/{id}", method = RequestMethod.PUT)
 			public String updateCropatFarmer(@RequestBody Crop crop) {
+				
 				HttpEntity<Crop> entity = new HttpEntity<Crop>(crop);
 				return restTemp.exchange("http://cropservice/crop/updatecrop/", HttpMethod.PUT, entity, String.class).getBody();
 
